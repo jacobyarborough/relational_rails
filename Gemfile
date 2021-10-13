@@ -39,6 +39,10 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'capybara'
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'bootstrap', '~> 4.2.1'
+  gem 'jquery-rails'
 end
 
 group :development do
