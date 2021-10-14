@@ -33,4 +33,5 @@ ActiveRecord::Schema.define(version: 2021_10_13_024512) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "accounts", "customers"
 end
