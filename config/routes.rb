@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   #accounts
   get '/accounts', to: 'accounts#index'
+  get '/accounts/:id', to: 'accounts#show'
 end
