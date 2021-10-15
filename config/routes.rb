@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   #welcome page
   get '/', to: 'welcome#index'
 
-  #Customers
+  #customers
   get '/customers', to: 'customers#index'
+  get '/customers/:id', to: 'customers#show'
+
+  #accounts
+  get '/accounts', to: 'accounts#index'
+  get '/accounts/:id', to: 'accounts#show'
+
+  #customer accounts
+  get '/customers/:id/accounts', to: 'customer_accounts#index'
 end
