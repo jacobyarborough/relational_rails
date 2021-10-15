@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   #accounts
   get '/accounts', to: 'accounts#index'
   get '/accounts/:id', to: 'accounts#show'
+
+  #customer accounts
+  get '/customers/:id/accounts', to: 'customer_accounts#index'
 end
