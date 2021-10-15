@@ -5,5 +5,4 @@ Rails.application.routes.draw do
 
   get '/channels', to: 'channels#index'
   get '/channels/new', to: 'channels#new'
-  post 'channels', to: 'channels#create'
 end
