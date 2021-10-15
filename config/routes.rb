@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   #Customers
   get '/customers', to: 'customers#index'
+  get '/customers/:id', to: 'customers#show'
 end
