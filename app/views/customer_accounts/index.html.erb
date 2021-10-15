@@ -1,5 +1,6 @@
 <h1>Customer Accounts</h1>
-<h2>@customer.name"</h2>
+
+<h3><%= @customer.name  %></h3>
 <% @customer.accounts.each do |account| %>
   <section id="customer_accounts-<%= account.id  %>">
     <h3> Name: <%= account.acct_name %></h3>
