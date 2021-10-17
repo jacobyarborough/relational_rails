@@ -2,9 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'show page' do
   it "displays the account attributes" do
-    customer = Customer.create!(name: 'Ted', age: 28, active_account: true)
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
 
-    customer2 = Customer.create!(name: 'Jim', age: 29, active_account: false)
+    customer2 = Customer.create!(name: 'Jim',
+                                 age: 29,
+                                 active_account: false)
 
     visit "/customers/#{customer.id}"
 
