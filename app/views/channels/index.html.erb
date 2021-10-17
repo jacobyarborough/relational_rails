@@ -1,6 +1,5 @@
 <h1>All Channels</h1>
 
 <% @channels.each do |channel| %>
-    <a href="/channels/:id"><h3><%= channel.name %></h3></a>
-    <%= channel.id %>
+    <h3><%= link_to channel.name, "/channels/#{channel.id}" %></h3>
 <% end %>

@@ -18,7 +18,7 @@ RSpec.describe 'Channels subscribers index' do
     end 
 
     it 'links to each subscribers show page' do
-        visit "channels/#{@channel_1.id}/subscribers"
+        visit "/channels/#{@channel_1.id}/subscribers"
 
         click_on @sub_1.name
 

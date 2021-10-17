@@ -1,7 +1,7 @@
 <h1>All Subscribers</h1>
 
 <% @subscribers.each do |subscriber| %>
-    <a href="/subscriber/:id"><h3><%= subscriber.name %></h3></a>
+    <h3><%= link_to subscriber.name, "/subscribers/#{subscriber.id}" %></h3>
     <p>
     Age: <%= subscriber.age %><br>
     Top Market: <%= subscriber.top_market %>
