@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   get '/channels', to: 'channels#index'
   get '/channels/:id', to: 'channels#show'
+  get '/subscribers', to: 'subscribers#index'
 end
