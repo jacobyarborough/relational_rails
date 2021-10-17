@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get '/channels', to: 'channels#index'
-  get 'channels/:id', to 'channels#show'
+  get 'channels/:id', to: 'channels#show'
 end
