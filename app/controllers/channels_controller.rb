@@ -1,8 +1,5 @@
 class ChannelsController < ApplicationController
     def index 
-        @channels = ['CBS', 'NBC', 'ABC']
-    end 
-
-    def new 
+        @channels = Channel.all
     end 
 end 
