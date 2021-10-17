@@ -3,7 +3,7 @@ class ChannelsController < ApplicationController
         @channels = Channel.all
     end 
 
-    def show 
-        
+    def show
+        @channel = Channel.find(params[:id])
     end 
 end 

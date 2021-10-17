@@ -2,4 +2,5 @@
 
 <% @channels.each do |channel| %>
     <a href="/channels/:id"><h3><%= channel.name %></h3></a>
+    <%= channel.id %>
 <% end %>
