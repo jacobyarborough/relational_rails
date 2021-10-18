@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   
   #channels
   get '/channels', to: 'channels#index'
+  get '/channels/new', to: 'channels#new'
   get '/channels/:id', to: 'channels#show'
+  post '/channels', to: 'channels#create'
   
   #subscribers
   get '/subscribers', to: 'subscribers#index'
