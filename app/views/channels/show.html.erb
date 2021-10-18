@@ -2,3 +2,4 @@
 <p><%= @channel.cost %></p>
 <p><%= @channel.spanish %></p>
 <p> Number of Subscribers: <%= @channel.sub_count %></p>
+<h4><%= link_to "Subscribers of #{@channel.name}", "/channels/#{@channel.id}/subscribers" %></h4>
