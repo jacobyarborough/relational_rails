@@ -20,5 +20,22 @@ RSpec.describe Customer, type: :model do
         expect(Customer.recently_created).to eq([customer2, customer])
       end
     end
+  describe "instance methods" do
+    describe '#count_accounts' do
+      it "counts the number of accounts associated to the customer on the show page" do
+        customer = Customer.create!(name: 'Ted',
+                                    age: 28,
+                                    active_account: true)
+        customer.accounts.create!(acct_name: 'Google',
+                                  has_money: true,
+                                  dollar_amount: 20)
+        customer.accounts.create!(acct_name: 'Amazon',
+                                  has_money: false,
+                                  dollar_amount: 30)
+
+        expect(customer.count_accounts).to eq(2)
+        end
+      end
+    end
   end
 end

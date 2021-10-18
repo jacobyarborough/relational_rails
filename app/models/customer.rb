@@ -4,4 +4,8 @@ class Customer < ApplicationRecord
   def self.recently_created
     order(created_at: :desc)
   end
+
+  def count_accounts
+    accounts.count
+  end
 end

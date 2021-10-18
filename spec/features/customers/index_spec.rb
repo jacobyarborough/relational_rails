@@ -16,15 +16,7 @@ RSpec.describe "index page" do
   end
 
   it "shows the customers sorted by most recently created" do
-#     [ ] done
-#
-# User Story 6, Parent Index sorted by Most Recently Created (x2)
-#
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
-  
+
     customer = Customer.create!(name: 'Ted',
                                 age: 28,
                                 active_account: true)
