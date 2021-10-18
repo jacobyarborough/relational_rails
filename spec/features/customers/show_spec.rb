@@ -33,13 +33,6 @@ RSpec.describe 'show page' do
                               has_money: false,
                               dollar_amount: 30)
 
-    #     [ ] done
-    #
-    # User Story 7, Parent Child Count (x2)
-    #
-    # As a visitor
-    # When I visit a parent's show page
-    # I see a count of the number of children associated with this parent
     visit "/customers/#{customer.id}"
 
     expect(page).to have_content("Number of Accounts: #{customer.count_accounts}")
