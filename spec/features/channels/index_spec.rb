@@ -22,4 +22,10 @@ RSpec.describe 'the channels index page' do
 
         expect(current_path).to eq("/channels/#{@channel_1.id}")
     end 
+
+    it 'should display channels in order of creation date descending' do 
+        visit "/channels"
+        expect(@channel_3.name).to appear_before(@channel_2.name)
+    #    expect(@channel_2).to appear_before(@channel_1)
+    end 
 end 
