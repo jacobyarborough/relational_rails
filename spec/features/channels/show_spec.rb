@@ -18,10 +18,10 @@ RSpec.describe 'the channels show page' do
         expect(page).to_not have_content(@channel_2.spanish)
     end 
 
-    xit "links to the channel's subscriber index page" do
+    it "links to the channel's subscriber index page" do
         visit "/channels/#{@channel_1.id}"
 
-        click_on "subscribers"
+        click_on "Subscribers of #{@channel_1.name}"
 
         expect(current_path).to eq("/channels/#{@channel_1.id}/subscribers")
     end 
