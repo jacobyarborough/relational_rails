@@ -34,4 +34,24 @@ ActiveRecord::Schema.define(version: 2021_10_17_020510) do
   end
 
   add_foreign_key "subscribers", "channels"
+  
+  create_table "accounts", force: :cascade do |t|
+    t.string "acct_name"
+    t.boolean "has_money"
+    t.integer "dollar_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_accounts_on_customer_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.boolean "active_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "accounts", "customers"
 end
