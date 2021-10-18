@@ -43,6 +43,7 @@ group :development, :test do
   gem 'orderly'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'bootstrap', '~> 4.2.1'
+  gem 'orderly'
   gem 'jquery-rails'
 end
 
