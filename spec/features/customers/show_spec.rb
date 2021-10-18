@@ -59,4 +59,15 @@ RSpec.describe 'show page' do
 
     expect(current_path).to eq('/customers')
   end
+
+  it "has a link to the customer accounts page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}"
+
+    click_on "Customer Accounts"
+
+    expect(current_path).to eq("/customers/#{customer.id}/accounts")
+  end
 end
