@@ -35,11 +35,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
   gem 'rspec-rails'
-  gem 'simplecov'
   gem 'capybara'
+  gem 'launchy' #save_and_open_page
+  gem 'simplecov'
+  gem 'orderly'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'bootstrap', '~> 4.2.1'
   gem 'orderly'

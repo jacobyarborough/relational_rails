@@ -1,0 +1,5 @@
+<h1>All Channels</h1>
+
+<% @channels.recently_created.each do |channel| %>
+    <h3><%= link_to channel.name, "/channels/#{channel.id}" %></h3>
+<% end %>

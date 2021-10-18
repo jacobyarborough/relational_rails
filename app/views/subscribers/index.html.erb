@@ -1,0 +1,9 @@
+<h1>All Subscribers</h1>
+
+<% @subscribers.each do |subscriber| %>
+    <h3><%= link_to subscriber.name, "/subscribers/#{subscriber.id}" %></h3>
+    <p>
+    Age: <%= subscriber.age %><br>
+    Top Market: <%= subscriber.top_market %>
+    </p>
+<% end %>
