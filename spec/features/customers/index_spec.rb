@@ -29,4 +29,20 @@ RSpec.describe "index page" do
     expect(customer2.name).to appear_before(customer.name)
 
   end
+
+  it "has a link to the accounts index page" do
+    visit '/customers'
+
+    click_on "Accounts"
+
+    expect(current_path).to eq('/accounts')
+  end
+
+  it "has a link to the customers index page" do
+    visit '/customers'
+
+    click_on "Customers"
+
+    expect(current_path).to eq('/customers')
+  end
 end

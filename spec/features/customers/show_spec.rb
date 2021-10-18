@@ -37,4 +37,26 @@ RSpec.describe 'show page' do
 
     expect(page).to have_content("Number of Accounts: #{customer.count_accounts}")
   end
+
+  it "has a link to the accounts index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}"
+
+    click_on "Accounts"
+
+    expect(current_path).to eq('/accounts')
+  end
+
+  it "has a link to the customers index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}"
+
+    click_on "Customers"
+
+    expect(current_path).to eq('/customers')
+  end
 end

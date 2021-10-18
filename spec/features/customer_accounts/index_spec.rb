@@ -57,4 +57,26 @@ RSpec.describe 'customer accounts index page' do
     expect(page).not_to have_content(account4.has_money)
     expect(page).not_to have_content(account4.dollar_amount)
   end
+
+  it "has a link to the accounts index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on "Accounts"
+
+    expect(current_path).to eq('/accounts')
+  end
+
+  it "has a link to the customers index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on "Customers"
+
+    expect(current_path).to eq('/customers')
+  end
 end

@@ -17,4 +17,22 @@ RSpec.describe 'index page' do
     expect(page).to have_content(account2.has_money)
     expect(page).to have_content(account2.dollar_amount)
   end
+
+  it "has a link to the accounts index page" do
+
+    visit "/accounts"
+
+    click_on "Accounts"
+
+    expect(current_path).to eq("/accounts")
+  end
+
+  it "has a link to the customers index page" do
+
+    visit "/accounts"
+
+    click_on "Customers"
+
+    expect(current_path).to eq("/customers")
+  end
 end
