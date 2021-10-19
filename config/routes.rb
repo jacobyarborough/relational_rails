@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/channels/new', to: 'channels#new'
   get '/channels/:id', to: 'channels#show'
   post '/channels', to: 'channels#create'
+  get '/channels/:id/edit', to: 'channels#edit'
+  patch '/channels/:id', to: 'channels#update'
   
   #subscribers
   get '/subscribers', to: 'subscribers#index'

@@ -15,6 +15,17 @@ class ChannelsController < ApplicationController
         redirect_to '/channels'
     end 
 
+    def edit
+        @channel = Channel.find(params[:id])
+    end
+
+    def update
+        channel = Channel.find(params[:id])
+        channel.update(channel_params)
+        channel.save
+        redirect_to "/channels/#{channel.id}"
+    end 
+
     private
     def channel_params
         channel_params = params.permit(:name, :cost, :spanish)

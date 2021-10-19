@@ -31,4 +31,23 @@ RSpec.describe 'the channels show page' do
 
         expect(page).to have_content("Number of Subscribers: 1")
     end 
+
+    it 'has a link to update the channel' do 
+        visit "/channels/#{@channel_1.id}"
+        click_link "Update Channel"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/edit")
+
+        fill_in "Name", with: 'ESPN'
+        fill_in "Cost", with: 100
+        choose "Available in Spanish"
+
+        click_button "Submit Changes"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}")
+
+        expect(page).to have_content('ESPN')
+        expect(page).to have_content('100')
+        expect(page).to have_content('true')
+    end 
 end 
