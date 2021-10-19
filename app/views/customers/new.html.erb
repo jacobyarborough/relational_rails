@@ -3,9 +3,9 @@
     <%= form.text_field :name %><br>
     <%= form.label :age %>
     <%= form.number_field :age %><br>
-    <%= form.radio_button :account_status, "yes" %>
-    <%= form.label :account_active, "Active Account" %>
-    <%= form.radio_button :account_status, "no" %>
-    <%= form.label :account_inactive, "Inactive Account" %><br>
+    <%= form.radio_button :account_active, "yes" %>
+    <%= form.label :account_status_active, "Active Account" %>
+    <%= form.radio_button :account_active, "no" %>
+    <%= form.label :account_status_inactive, "Inactive Account" %><br>
     <%= form.submit 'Create Customer' %>
 <% end %>

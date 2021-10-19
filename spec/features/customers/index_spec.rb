@@ -55,8 +55,8 @@ RSpec.describe "index page" do
 
         fill_in :name, with: 'tedaroosky'
         fill_in :age, with: 12
-        # save_and_open_page
-        choose('account_status', option: 'yes')
+
+        choose('account_active', option: 'yes')
 
         click_on "Create Customer"
 
