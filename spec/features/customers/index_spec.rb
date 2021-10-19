@@ -53,11 +53,12 @@ RSpec.describe "index page" do
 
         expect(current_path).to eq('/customers/new')
 
-        fill_in "Name", with: 'tedaroosky'
-        fill_in "Age", with: 12
-        choose 'Active Account'
+        fill_in :name, with: 'tedaroosky'
+        fill_in :age, with: 12
+        # save_and_open_page
+        choose('account_status', option: 'yes')
 
-        click_button "Create Channel"
+        click_on "Create Customer"
 
         expect(current_path).to eq('/customers')
         expect(page).to have_content('tedaroosky')

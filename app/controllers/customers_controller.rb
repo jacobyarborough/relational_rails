@@ -12,17 +12,18 @@ class CustomersController < ApplicationController
 
   def create
         Customer.create(customer_params)
+        require "pry"; binding.pry
         redirect_to '/customers'
     end
 
   private
     def customer_params
-        customer_params = params.permit(:name, :age, :account_active)
-        customer_params[:age] = customer_params[:cost].to_i
-        if customer_params[:account_active] == 'yes'
-            customer_params[:account_active] = true
+        customer_params = params.permit(:name, :age, :active_account)
+        if customer_params[:account_status] == 'yes'
+
+            customer_params[:active_account] = true
         else
-            customer_params[:account_active] = false
+            customer_params[:active_account] = false
         end
         customer_params
     end

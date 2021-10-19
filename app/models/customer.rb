@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  validates :age, numericality: true
   has_many :accounts
 
   def self.recently_created
