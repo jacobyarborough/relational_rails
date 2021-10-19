@@ -24,4 +24,25 @@ RSpec.describe 'Channels subscribers index' do
 
         expect(current_path).to eq("/subscribers/#{@sub_1.id}")
     end 
+
+    it 'adds a link to the channel_subscribers page to create a new subscriebr for that channel' do 
+        visit "/channels/#{@channel_1.id}/subscribers"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/subscribers")
+
+        click_link "Create Subscriber"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/subscribers/new")
+
+        fill_in "Name", with: "Jerry"
+        fill_in "Age", with: 36
+        choose "In Top Market"
+
+        click_button "Create Subscriber"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/subscribers")
+        expect(page).to have_content("Jerry")
+        expect(page).to have_content("Age: 36")
+        expect(page).to have_content("Top Market: true")
+    end 
 end 

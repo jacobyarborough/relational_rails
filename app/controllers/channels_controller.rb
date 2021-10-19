@@ -23,6 +23,7 @@ class ChannelsController < ApplicationController
         channel = Channel.find(params[:id])
         channel.update(channel_params)
         channel.save
+        require 'pry'; binding.pry
         redirect_to "/channels/#{channel.id}"
     end 
 

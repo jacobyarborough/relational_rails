@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   
   #channel_subscribers
   get "/channels/:channel_id/subscribers", to: 'channel_subscribers#index'
+  get "/channels/:channel_id/subscribers/new", to: 'channel_subscribers#new'
+  post "/channels/:channel_id/subscribers", to: 'channel_subscribers#create'
   
   #customers
   get '/customers', to: 'customers#index'
