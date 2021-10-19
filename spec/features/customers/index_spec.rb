@@ -45,4 +45,21 @@ RSpec.describe "index page" do
 
     expect(current_path).to eq('/customers')
   end
+
+  it 'should have a link to create a new channel' do
+        visit "/customers"
+
+        click_link "New Customer"
+
+        expect(current_path).to eq('/customers/new')
+
+        fill_in "Name", with: 'tedaroosky'
+        fill_in "Age", with: 12
+        choose 'Active Account'
+
+        click_button "Create Channel"
+
+        expect(current_path).to eq('/customers')
+        expect(page).to have_content('tedaroosky')
+    end
 end
