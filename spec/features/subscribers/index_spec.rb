@@ -11,9 +11,9 @@ RSpec.describe 'the subscribers index page' do
         visit "/subscribers"
 
         expect(current_path).to eq('/subscribers')
-        expect(page).to have_content(@sub_1.name)
-        expect(page).to have_content(@sub_1.age)
-        expect(page).to have_content(@sub_1.top_market)
+        expect(page).not_to have_content(@sub_1.name)
+        expect(page).not_to have_content(@sub_1.age)
+        expect(page).not_to have_content(@sub_1.top_market)
         expect(page).to have_content(@sub_2.name)
         expect(page).to have_content(@sub_2.age)
         expect(page).to have_content(@sub_2.top_market)
@@ -22,8 +22,8 @@ RSpec.describe 'the subscribers index page' do
     it 'links to each subscribers show page' do
         visit visit "/subscribers"
 
-        click_on @sub_1.name
+        click_on @sub_2.name
 
-        expect(current_path).to eq("/subscribers/#{@sub_1.id}")
+        expect(current_path).to eq("/subscribers/#{@sub_2.id}")
     end 
 end 
