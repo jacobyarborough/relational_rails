@@ -88,4 +88,24 @@ RSpec.describe 'show page' do
     expect(page).to have_content(42)
     expect(page).to have_content(true)
   end
+
+  it "can delete an account" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    account = Account.create!(acct_name: 'Bob',
+                              has_money: true,
+                              dollar_amount: 2400,
+                              customer_id: customer.id)
+
+    visit "/accounts/#{account.id}"
+
+    click_on 'Delete Account'
+
+    expect(current_path).to eq("/accounts")
+    expect(page).not_to have_content(account.acct_name)
+    expect(page).not_to have_content(account.has_money)
+    expect(page).not_to have_content(account.dollar_amount)
+    expect(page).not_to have_content('Delete Account')
+  end
 end
