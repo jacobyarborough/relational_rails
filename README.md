@@ -1,27 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Jacob Yarborough and Ted Staros Relational Rails project.
 
-Things you may want to cover:
+* Ruby version: 2.7.2
 
-* Ruby version
+* Database creation: "$ rails db:create" 
 
-* System dependencies
+* Database initialization "$ rails db:migrate"
 
-* Configuration
+* How to run the test suite: RSpec
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+Schema:
 
 ![Screen Shot 2021-10-11 at 4 56 56 PM](https://user-images.githubusercontent.com/86209646/138181788-d920fd16-dd7b-4a03-9585-65563ce25833.png)
