@@ -90,4 +90,13 @@ RSpec.describe 'Channels subscribers index' do
         expect(page).to have_content(@sub_3.name)
         expect(page).not_to have_content(@sub_1.name)
     end 
+
+    it 'has a link to delete a subscriber' do 
+        visit "/channels/#{@channel_1.id}/subscribers"
+
+        click_link("Delete #{@sub_3.name}")
+
+        expect(current_path).to eq("/subscribers")
+        expect(page).not_to have_content(@sub_3.name)
+    end 
 end 

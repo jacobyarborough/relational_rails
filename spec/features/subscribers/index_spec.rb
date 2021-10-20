@@ -62,4 +62,13 @@ RSpec.describe 'the subscribers index page' do
         expect(page).to have_content("27")
         expect(page).to have_content("true")
     end 
+
+    it 'has a link to delete a subscriber' do 
+        visit "/subscribers"
+
+        click_link("Delete #{@sub_3.name}")
+
+        expect(current_path).to eq("/subscribers")
+        expect(page).not_to have_content(@sub_3.name)
+    end 
 end 
