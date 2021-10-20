@@ -1,9 +1,10 @@
 <h1>All Subscribers</h1>
 
 <% @subscribers.each do |subscriber| %>
-    <h3><%= link_to subscriber.name, "/subscribers/#{subscriber.id}" %></h3>
+    <p><%= link_to subscriber.name, "/subscribers/#{subscriber.id}" %> | <%= link_to "Edit #{subscriber.name}", "/subscribers/#{subscriber.id}/edit" %></p>
     <p>
     Age: <%= subscriber.age %><br>
     Top Market: <%= subscriber.top_market %>
     </p>
 <% end %>
+<h4><%= link_to "Sort Alphabetically", "/subscribers?alpha_sort=true" %></h4>

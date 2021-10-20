@@ -1,0 +1,11 @@
+<%= form_with url: "/subscribers/#{@subscriber.id}", method: :patch, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @subscriber.name %><br>
+    <%= form.label :age %>
+    <%= form.number_field :age, value: @subscriber.age %><br>
+    <%= form.radio_button :top_market, "yes", :checked => (@subscriber.top_market == true) %>
+    <%= form.label :top_market_yes, "In Top Market" %>
+    <%= form.radio_button :top_market, "no", :checked => (@subscriber.top_market == false) %>
+    <%= form.label :top_market_no, "Out of Top Market" %><br>
+    <%= form.submit 'Update Subscriber' %>
+<% end %>

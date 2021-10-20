@@ -1,0 +1,11 @@
+<%= form_with url: "/channels/#{params[:channel_id]}/subscribers", method: :post, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %><br>
+    <%= form.label :age %>
+    <%= form.number_field :age %><br>
+    <%= form.radio_button :top_market, "yes" %>
+    <%= form.label :top_market_yes, "In Top Market" %>
+    <%= form.radio_button :top_market, "no" %>
+    <%= form.label :top_market_no, "Out of Top Market" %><br>
+    <%= form.submit 'Create Subscriber' %>
+<% end %>
