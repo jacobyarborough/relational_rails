@@ -18,6 +18,11 @@ class SubscribersController < ApplicationController
         redirect_to "/subscribers/#{params[:id]}"
     end 
 
+    def destroy 
+        Subscriber.destroy(params[:id])
+        redirect_to '/subscribers'
+    end 
+
     private
     def subscriber_params
         subscriber_params = params.permit(:name, :age, :top_market)

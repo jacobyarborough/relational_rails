@@ -17,7 +17,7 @@ RSpec.describe Subscriber do
     end 
 
     describe 'index_view' do 
-      it 'returns the subscribers in aplha order' do 
+      xit 'returns the subscribers in aplha order' do 
         channel_1 = Channel.create!(name: 'ABC', cost: 25, spanish: false)
         sub_2 = channel_1.subscribers.create!(name: 'John', age: 20, top_market: true)
         sub_3 = channel_1.subscribers.create!(name: 'Jacoby', age: 27, top_market: true)
