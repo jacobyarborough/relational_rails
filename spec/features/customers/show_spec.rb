@@ -103,4 +103,19 @@ RSpec.describe 'show page' do
 
   end
 
+  it "has a link to delete a customer" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+
+    visit "/customers/#{customer.id}"
+
+    click_on "Delete Customer"
+
+    expect(current_path).to eq("/customers")
+    expect(page).not_to have_content(customer.name)
+    expect(page).not_to have_content(customer.age)
+    expect(page).not_to have_content(customer.active_account)
+    expect(page).not_to have_content('Delete Customer')
+  end
 end
