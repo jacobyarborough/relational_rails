@@ -1,0 +1,11 @@
+<%= form_with url: "/channels/#{@channel.id}", method: :patch, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @channel.name %><br>
+    <%= form.label :cost %>
+    <%= form.number_field :cost, value: @channel.cost %><br>
+    <%= form.radio_button :spanish, "yes", :checked => (@channel.spanish == true) %>
+    <%= form.label :spanish_yes, "Available in Spanish" %>
+    <%= form.radio_button :spanish, "no", :checked => (@channel.spanish == false) %>
+    <%= form.label :spanish_no, "Unavailable in Spanish" %><br>
+    <%= form.submit 'Submit Changes' %>
+<% end %>
