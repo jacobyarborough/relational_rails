@@ -29,4 +29,56 @@ RSpec.describe "index page" do
     expect(customer2.name).to appear_before(customer.name)
 
   end
+
+  it "has a link to the accounts index page" do
+    visit '/customers'
+
+    click_on "Accounts"
+
+    expect(current_path).to eq('/accounts')
+  end
+
+  it "has a link to the customers index page" do
+    visit '/customers'
+
+    click_on "Customers"
+
+    expect(current_path).to eq('/customers')
+  end
+
+  it 'should have a link to create a new customer' do
+        visit "/customers"
+
+        click_link "New Customer"
+
+        expect(current_path).to eq('/customers/new')
+
+        fill_in :name, with: 'tedaroosky'
+        fill_in :age, with: 12
+
+        choose('account_active', option: 'yes')
+
+        click_on "Create Customer"
+
+        expect(current_path).to eq('/customers')
+        expect(page).to have_content('tedaroosky')
+    end
+
+#     User Story 17, Parent Update From Parent Index Page (x2)
+#
+# As a visitor
+# When I visit the parent index page
+# Next to every parent, I see a link to edit that parent's info
+# When I click the link
+# I should be taken to that parents edit page where I can update its information just like in User Story 4
+  it "has a link to update the customer" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/"
+
+    click_on 'Update Customer'
+
+    expect(current_path).to eq("/customers/#{customer.id}/edit")
+  end
 end

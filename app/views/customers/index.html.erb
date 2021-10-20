@@ -1,4 +1,6 @@
 <h1>Customers</h1>
 <%@customers.recently_created.each do |customer|%>
   <h3>Name: <%= customer.name %></h3>
+  <h4><%= link_to "Update Customer", "/customers/#{customer.id}/edit"%></h4>
 <% end %>
+<h4><%= link_to "New Customer", "/customers/new" %></h4>

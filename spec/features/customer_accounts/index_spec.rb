@@ -57,4 +57,81 @@ RSpec.describe 'customer accounts index page' do
     expect(page).not_to have_content(account4.has_money)
     expect(page).not_to have_content(account4.dollar_amount)
   end
+
+  it "has a link to the accounts index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on "Accounts"
+
+    expect(current_path).to eq('/accounts')
+  end
+
+  it "has a link to the customers index page" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on "Customers"
+
+    expect(current_path).to eq('/customers')
+  end
+
+  it "has a link to create a new customer account" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on "Create Account"
+
+    expect(current_path).to eq("/customers/#{customer.id}/accounts/new")
+
+    fill_in :acct_name, with: 'Target'
+    fill_in :dollar_amount, with: 24
+
+    choose('has_money', option: 'yes')
+
+    click_on "Create Account"
+
+    expect(current_path).to eq("/customers/#{customer.id}/accounts")
+
+    expect(page).to have_content('Target')
+    expect(page).to have_content(24)
+    expect(page).to have_content('true')
+  end
+
+  it "has a link that sorts the accounts by the alphabet" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+
+    account = Account.create!(acct_name: 'Zoe',
+                              has_money: true,
+                              dollar_amount: 2400,
+                              customer_id: customer.id)
+
+    account2 = Account.create!(acct_name: 'Joe',
+                               has_money: false,
+                               dollar_amount: 3400,
+                               customer_id: customer.id)
+
+    account3 = Account.create!(acct_name: 'Karl',
+                               has_money: false,
+                               dollar_amount: 3500,
+                               customer_id: customer.id)
+
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on 'Alphabetize'
+
+    expect(current_path).to eq("/customers/#{customer.id}/accounts")
+
+    expect(account2.acct_name).to appear_before(account.acct_name)
+    expect(account2.acct_name).to appear_before(account3.acct_name)
+  end
 end

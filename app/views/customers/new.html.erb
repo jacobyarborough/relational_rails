@@ -1,0 +1,11 @@
+<%= form_with url: "/customers", method: :post, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %><br>
+    <%= form.label :age %>
+    <%= form.number_field :age %><br>
+    <%= form.radio_button :account_active, "yes" %>
+    <%= form.label :account_status_active, "Active Account" %>
+    <%= form.radio_button :account_active, "no" %>
+    <%= form.label :account_status_inactive, "Inactive Account" %><br>
+    <%= form.submit 'Create Customer' %>
+<% end %>

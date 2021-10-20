@@ -1,5 +1,5 @@
 <h1>Accounts</h1>
-<% @accounts.each do |account| %>
+<% @accounts.only_has_money.each do |account| %>
   <h3>Account Name: <%=account.acct_name %></h3>
   <p>Has money?: <%=account.has_money %></p>
   <p>Dollar Amount: <%=account.dollar_amount %></p>

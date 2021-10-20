@@ -5,3 +5,5 @@
 
 <p> Active Account: <%= @customer.active_account %></p>
 <p> Age: <%= @customer.age %></p>
+<%= link_to 'Customer Accounts', "/customers/#{@customer.id}/accounts" %>
+<%= link_to 'Update Customer', "/customers/#{@customer.id}/edit" %>

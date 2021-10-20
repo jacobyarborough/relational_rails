@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   #welcome page
   get '/', to: 'welcome#index'
-  
+
   #channels
   get '/channels', to: 'channels#index'
   get '/channels/new', to: 'channels#new'
@@ -25,12 +25,20 @@ Rails.application.routes.draw do
   
   #customers
   get '/customers', to: 'customers#index'
+  get '/customers/new', to: 'customers#new'
+  post '/customers', to: 'customers#create'
   get '/customers/:id', to: 'customers#show'
+  get '/customers/:id/edit', to: 'customers#edit'
+  patch '/customers/:id', to: 'customers#update'
 
   #accounts
   get '/accounts', to: 'accounts#index'
   get '/accounts/:id', to: 'accounts#show'
+  get '/accounts/:id/edit', to: 'accounts#edit'
+  patch '/accounts/:id', to: 'accounts#update'
 
   #customer accounts
   get '/customers/:id/accounts', to: 'customer_accounts#index'
+  get '/customers/:id/accounts/new', to: 'customer_accounts#new'
+  post '/customers/:id/accounts', to: 'customer_accounts#create'
 end
