@@ -104,4 +104,34 @@ RSpec.describe 'customer accounts index page' do
     expect(page).to have_content(24)
     expect(page).to have_content('true')
   end
+
+  it "has a link that sorts the accounts by the alphabet" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+
+    account = Account.create!(acct_name: 'Zoe',
+                              has_money: true,
+                              dollar_amount: 2400,
+                              customer_id: customer.id)
+
+    account2 = Account.create!(acct_name: 'Joe',
+                               has_money: false,
+                               dollar_amount: 3400,
+                               customer_id: customer.id)
+
+    account3 = Account.create!(acct_name: 'Karl',
+                               has_money: false,
+                               dollar_amount: 3500,
+                               customer_id: customer.id)
+
+    visit "/customers/#{customer.id}/accounts"
+
+    click_on 'Alphabetize'
+
+    expect(current_path).to eq("/customers/#{customer.id}/accounts")
+
+    expect(account2.acct_name).to appear_before(account.acct_name)
+    expect(account2.acct_name).to appear_before(account3.acct_name)
+  end
 end

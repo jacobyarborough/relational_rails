@@ -1,6 +1,10 @@
 class CustomerAccountsController < ApplicationController
   def index
     @customer = Customer.find(params[:id])
+    @accounts = @customer.accounts
+    if params[:order] == 'alphabetize'
+      @accounts = @accounts.alphabetize
+    end
   end
 
   def new
