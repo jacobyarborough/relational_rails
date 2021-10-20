@@ -50,14 +50,7 @@ RSpec.describe 'the channels show page' do
         expect(page).to have_content('true')
     end 
 
-    it '' do 
-        # As a visitor
-        # When I visit a parent show page
-        # Then I see a link to delete the parent
-        # When I click the link "Delete Parent"
-        # Then a 'DELETE' request is sent to '/parents/:id',
-        # the parent is deleted, and all child records are deleted
-        # and I am redirected to the parent index page where I no longer see this parent
+    it 'has a link to delete a channel' do 
         channel_10 = Channel.create!(name: 'FOX', cost: 25, spanish: false)
         visit "/channels/#{channel_10.id}"
 
@@ -65,6 +58,5 @@ RSpec.describe 'the channels show page' do
 
         expect(current_path).to eq("/channels")
         expect(page).not_to have_content(channel_10.name)
-
     end 
 end 

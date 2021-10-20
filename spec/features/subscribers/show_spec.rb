@@ -43,4 +43,15 @@ RSpec.describe 'the subscribers show page' do
         expect(page).to have_content("27")
         expect(page).to have_content("true")
     end 
+
+    it 'has a link to delete a subscriber' do 
+        channel_2 = Channel.create(name: 'CBS', cost: 20, spanish: true)
+        subscriber_10 = Subscriber.create(name: 'Joey', age: 29, top_market: true, channel_id: channel_2.id)
+        visit "/subscribers/#{subscriber_10.id}"
+
+        click_link("Delete Subscriber")
+
+        expect(current_path).to eq("/subscribers")
+        expect(page).not_to have_content(subscriber_10.name)
+    end 
 end 
