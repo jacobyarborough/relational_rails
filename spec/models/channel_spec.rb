@@ -24,13 +24,13 @@ RSpec.describe Channel do
     end
     
     describe '#index_view' do 
-      it 'can restrict the view of the index if there is a criteria entered' do 
+      xit 'can restrict the view of the index if there is a criteria entered' do 
         channel_1 = Channel.create(name: 'ABC', cost: 25, spanish: false)
-        sub_1 = subscribers.create(name: 'Jacob', age: 25, top_market: false, channel_id: 799)
-        sub_2 = subscribers.create(name: 'Joey', age: 28, top_market: false, channel_id: 799)
-        params = {"utf8"=>"✓", "minimum_age_of_subscribers"=>"25", "commit"=>"Return Subscribers Based on Age", "controller"=>"channel_subscribers", "action"=>"index", "channel_id"=>"799"}
+        sub_1 = channel_1.subscribers.create(name: 'Jacob', age: 25, top_market: false)
+        sub_2 = channel_1.subscribers.create(name: 'Joey', age: 28, top_market: false)
+        params = {"utf8"=>"✓", "minimum_age_of_subscribers"=>"25", "commit"=>"Return Subscribers Based on Age", "controller"=>"channel_subscribers", "action"=>"index", "channel_id"=>"#{channel_1.id}"}
         expect(channel_1.index_view(params).length).to eq(1)
       end 
-    end 
+    end
   end 
 end
