@@ -21,7 +21,7 @@ RSpec.describe 'the subscribers index page' do
     end 
 
     it 'links to each subscribers show page' do
-        visit visit "/subscribers"
+        visit "/subscribers"
 
         click_on @sub_2.name
 
@@ -34,7 +34,32 @@ RSpec.describe 'the subscribers index page' do
         click_link "Sort Alphabetically"
 
         expect(current_path).to eq("/subscribers")
-        save_and_open_page
+
         expect(@sub_3.name).to appear_before(@sub_2.name)
+    end 
+
+    it 'has a link to update a subscriber' do 
+        visit "/subscribers"
+
+        expect(current_path).to eq("/subscribers")
+   
+        expect(page).to have_link("Edit #{@sub_2.name}")
+        expect(page).to have_link("Edit #{@sub_3.name}")
+
+        click_link "Edit #{@sub_2.name}"
+
+        expect(current_path).to eq("/subscribers/#{@sub_2.id}/edit")
+
+        fill_in 'Name', with: 'Jacoby'
+        fill_in 'Age', with: 27
+        choose 'In Top Market'
+
+        click_button "Update Subscriber"
+
+        expect(current_path).to eq("/subscribers/#{@sub_2.id}")
+
+        expect(page).to have_content("Jacoby")
+        expect(page).to have_content("27")
+        expect(page).to have_content("true")
     end 
 end 

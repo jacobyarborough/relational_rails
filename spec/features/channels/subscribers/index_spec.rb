@@ -45,4 +45,26 @@ RSpec.describe 'Channels subscribers index' do
         expect(page).to have_content("Age: 36")
         expect(page).to have_content("Top Market: true")
     end 
+
+    it 'has a link to update a subscriber' do 
+        visit "/channels/#{@channel_1.id}/subscribers"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/subscribers")
+
+        click_link "Edit #{@sub_2.name}"
+
+        expect(current_path).to eq("/subscribers/#{@sub_2.id}/edit")
+
+        fill_in 'Name', with: 'Jacoby'
+        fill_in 'Age', with: 27
+        choose 'In Top Market'
+
+        click_button "Update Subscriber"
+
+        expect(current_path).to eq("/subscribers/#{@sub_2.id}")
+
+        expect(page).to have_content("Jacoby")
+        expect(page).to have_content("27")
+        expect(page).to have_content("true")
+    end 
 end 

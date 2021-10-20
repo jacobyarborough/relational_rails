@@ -17,7 +17,7 @@ RSpec.describe 'the subscribers show page' do
         expect(page).to_not have_content(sub_2.top_market)
     end 
 
-    it 'has a link to uodate a subscriber' do 
+    it 'has a link to update a subscriber' do 
         channel_1 = Channel.create(name: 'ABC', cost: 25, spanish: false)
         channel_2 = Channel.create(name: 'CBS', cost: 20, spanish: true)
         sub_1 = Subscriber.create(name: 'Jacob', age: 25, top_market: false, channel_id: channel_1.id)
