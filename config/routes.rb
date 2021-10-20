@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/customers/new', to: 'customers#new'
   post '/customers', to: 'customers#create'
   get '/customers/:id', to: 'customers#show'
+  get '/customers/:id/edit', to: 'customers#edit'
+  patch '/customers/:id', to: 'customers#update'
 
   #accounts
   get '/accounts', to: 'accounts#index'
