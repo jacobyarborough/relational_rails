@@ -46,4 +46,27 @@ RSpec.describe 'the channels index page' do
         expect(current_path).to eq('/channels')
         expect(page).to have_content('PBS')
     end 
+
+    it 'should have a link to edit each channel' do
+        visit "/channels"
+
+        expect(page).to have_link("Edit #{@channel_1.name}")
+        expect(page).to have_link("Edit #{@channel_2.name}") 
+        expect(page).to have_link("Edit #{@channel_3.name}") 
+
+        click_link ("Edit #{@channel_1.name}")
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}/edit")
+
+        fill_in "Name", with: 'ESPN'
+        fill_in "Cost", with: 100
+        choose "Available in Spanish"
+        click_button "Submit Changes"
+
+        expect(current_path).to eq("/channels/#{@channel_1.id}")
+
+        expect(page).to have_content('ESPN')
+        expect(page).to have_content('100')
+        expect(page).to have_content('true')
+    end 
 end 
