@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #subscribers
   get '/subscribers', to: 'subscribers#index'
   get '/subscribers/:id', to: 'subscribers#show'
+  get "/subscribers/:id/edit", to: 'subscribers#edit'
+  patch "/subscribers/:id", to: 'subscribers#update'
   
   #channel_subscribers
   get "/channels/:channel_id/subscribers", to: 'channel_subscribers#index'

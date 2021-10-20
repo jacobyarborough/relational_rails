@@ -41,7 +41,6 @@ RSpec.describe 'the channels show page' do
         fill_in "Name", with: 'ESPN'
         fill_in "Cost", with: 100
         choose "Available in Spanish"
-
         click_button "Submit Changes"
 
         expect(current_path).to eq("/channels/#{@channel_1.id}")
