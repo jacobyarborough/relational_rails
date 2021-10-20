@@ -26,6 +26,11 @@ class ChannelsController < ApplicationController
         redirect_to "/channels/#{channel.id}"
     end 
 
+    def destroy 
+        Channel.destroy(params[:id])
+        redirect_to '/channels'
+    end 
+
     private
     def channel_params
         channel_params = params.permit(:name, :cost, :spanish)

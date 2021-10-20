@@ -49,4 +49,14 @@ RSpec.describe 'the channels show page' do
         expect(page).to have_content('100')
         expect(page).to have_content('true')
     end 
+
+    it 'has a link to delete a channel' do 
+        channel_10 = Channel.create!(name: 'FOX', cost: 25, spanish: false)
+        visit "/channels/#{channel_10.id}"
+
+        click_link("Delete Channel")
+
+        expect(current_path).to eq("/channels")
+        expect(page).not_to have_content(channel_10.name)
+    end 
 end 

@@ -1,7 +1,7 @@
 class ChannelSubscribersController < ApplicationController
     def index 
         channel = Channel.find(params[:channel_id])
-        @subscribers = channel.subscribers
+        @subscribers = channel.index_view(params)
     end 
 
     def new
