@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/channels', to: 'channels#create'
   get '/channels/:id/edit', to: 'channels#edit'
   patch '/channels/:id', to: 'channels#update'
+  delete '/channels/:id', to: 'channels#destroy'
   
   #subscribers
   get '/subscribers', to: 'subscribers#index'

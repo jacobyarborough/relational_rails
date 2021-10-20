@@ -4,3 +4,4 @@
 <p> Number of Subscribers: <%= @channel.sub_count %></p>
 <h4><%= link_to "Subscribers of #{@channel.name}", "/channels/#{@channel.id}/subscribers" %></h4>
 <h4><%= link_to "Update Channel", "/channels/#{@channel.id}/edit" %></h4>
+<h4><%= link_to "Delete Channel", "/channels/#{@channel.id}", method: :delete %></h4>
