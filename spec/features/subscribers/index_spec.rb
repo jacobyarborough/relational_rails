@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'the subscribers index page' do
-    before :each do 
+    before :each do
         @channel_1 = Channel.create(name: 'ABC', cost: 25, spanish: false)
         @channel_2 = Channel.create(name: 'CBS', cost: 20, spanish: true)
         @sub_1 = @channel_1.subscribers.create(name: 'Jacob', age: 25, top_market: false)
         @sub_2 = @channel_2.subscribers.create(name: 'John', age: 20, top_market: true)
-    end 
+    end
     it 'shows a list of all subscribers' do
         visit "/subscribers"
 
@@ -17,7 +17,7 @@ RSpec.describe 'the subscribers index page' do
         expect(page).to have_content(@sub_2.name)
         expect(page).to have_content(@sub_2.age)
         expect(page).to have_content(@sub_2.top_market)
-    end 
+    end
 
     it 'links to each subscribers show page' do
         visit visit "/subscribers"
@@ -25,5 +25,5 @@ RSpec.describe 'the subscribers index page' do
         click_on @sub_1.name
 
         expect(current_path).to eq("/subscribers/#{@sub_1.id}")
-    end 
-end 
+    end
+end
