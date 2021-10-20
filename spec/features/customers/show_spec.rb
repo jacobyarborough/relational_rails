@@ -71,11 +71,6 @@ RSpec.describe 'show page' do
     expect(current_path).to eq("/customers/#{customer.id}/accounts")
   end
 
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/parents/:id',
-# the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
   it "has a link to update the customer" do
     customer = Customer.create!(name: 'Ted',
                                 age: 28,

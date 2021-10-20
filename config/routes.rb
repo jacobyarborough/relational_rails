@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 
   #customer accounts
   get '/customers/:id/accounts', to: 'customer_accounts#index'
+  get '/customers/:id/accounts/new', to: 'customer_accounts#new'
+  post '/customers/:id/accounts', to: 'customer_accounts#create'
 end

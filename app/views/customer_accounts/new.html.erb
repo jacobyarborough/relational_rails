@@ -1,0 +1,11 @@
+<%= form_with url: "/customers/#{@customer.id}/accounts", method: :post, local: true do |form| %>
+    <%= form.label :acct_name %>
+    <%= form.text_field :acct_name %><br>
+    <%= form.label :dollar_amount %>
+    <%= form.number_field :dollar_amount %><br>
+    <%= form.radio_button :has_money, "yes" %>
+    <%= form.label :account_status_active, "They have money" %>
+    <%= form.radio_button :has_money, "no" %>
+    <%= form.label :account_status_inactive, "They don't have money" %><br>
+    <%= form.submit "Create Account" %>
+<% end %>
