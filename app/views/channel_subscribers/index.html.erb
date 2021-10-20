@@ -6,3 +6,8 @@
     </p>
 <% end %>
 <h4><%= link_to "Create Subscriber", "/channels/#{params[:channel_id]}/subscribers/new" %></h4>
+<%= form_with url: "/channels/#{params[:channel_id]}/subscribers", method: :get, local: true do |form| %>
+    <%= form.label :minimum_age_of_subscribers %>
+    <%= form.number_field :minimum_age_of_subscribers %><br>
+    <%= form.submit 'Return Subscribers Based on Age' %>
+<% end %>
