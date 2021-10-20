@@ -7,3 +7,4 @@
 <p> Age: <%= @customer.age %></p>
 <%= link_to 'Customer Accounts', "/customers/#{@customer.id}/accounts" %>
 <%= link_to 'Update Customer', "/customers/#{@customer.id}/edit" %>
+<%= button_to 'Delete Customer', "/customers/#{@customer.id}", method: :delete %>

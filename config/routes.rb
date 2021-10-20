@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/channels/:id/edit', to: 'channels#edit'
   patch '/channels/:id', to: 'channels#update'
   delete '/channels/:id', to: 'channels#destroy'
-  
+
   #subscribers
   get '/subscribers', to: 'subscribers#index'
   get '/subscribers/:id', to: 'subscribers#show'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get "/channels/:channel_id/subscribers", to: 'channel_subscribers#index'
   get "/channels/:channel_id/subscribers/new", to: 'channel_subscribers#new'
   post "/channels/:channel_id/subscribers", to: 'channel_subscribers#create'
-  
+
   #customers
   get '/customers', to: 'customers#index'
   get '/customers/new', to: 'customers#new'
@@ -32,12 +32,14 @@ Rails.application.routes.draw do
   get '/customers/:id', to: 'customers#show'
   get '/customers/:id/edit', to: 'customers#edit'
   patch '/customers/:id', to: 'customers#update'
+  delete '/customers/:id', to: 'customers#destroy'
 
   #accounts
   get '/accounts', to: 'accounts#index'
   get '/accounts/:id', to: 'accounts#show'
   get '/accounts/:id/edit', to: 'accounts#edit'
   patch '/accounts/:id', to: 'accounts#update'
+  delete '/accounts/:id', to: 'accounts#destroy'
 
   #customer accounts
   get '/customers/:id/accounts', to: 'customer_accounts#index'

@@ -25,6 +25,11 @@ class CustomersController < ApplicationController
     redirect_to "/customers/#{customer.id}"
   end
 
+  def destroy
+    Customer.destroy(params[:id])
+    redirect_to '/customers'
+  end
+
   private
     def customer_params
         customer_params = params.permit(:name, :age, :active_account)
