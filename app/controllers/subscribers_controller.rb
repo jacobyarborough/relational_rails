@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
     def index 
-        @subscribers = Subscriber.get_true
+        @subscribers = Subscriber.index_view(params)
     end 
 
     def show 

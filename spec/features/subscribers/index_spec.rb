@@ -6,6 +6,7 @@ RSpec.describe 'the subscribers index page' do
         @channel_2 = Channel.create(name: 'CBS', cost: 20, spanish: true)
         @sub_1 = @channel_1.subscribers.create(name: 'Jacob', age: 25, top_market: false)
         @sub_2 = @channel_2.subscribers.create(name: 'John', age: 20, top_market: true)
+        @sub_3 = @channel_2.subscribers.create(name: 'Aaron', age: 21, top_market: true)
     end 
     it 'shows a list of all subscribers' do
         visit "/subscribers"
@@ -25,5 +26,15 @@ RSpec.describe 'the subscribers index page' do
         click_on @sub_2.name
 
         expect(current_path).to eq("/subscribers/#{@sub_2.id}")
+    end 
+
+    it 'has a link to sort subscribers by alphabetical order' do 
+        visit "/subscribers"
+
+        click_link "Sort Alphabetically"
+
+        expect(current_path).to eq("/subscribers")
+        save_and_open_page
+        expect(@sub_3.name).to appear_before(@sub_2.name)
     end 
 end 
