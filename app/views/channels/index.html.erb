@@ -2,5 +2,6 @@
 
 <% @channels.recently_created.each do |channel| %>
     <p><%= link_to channel.name, "/channels/#{channel.id}" %> | <%= link_to "Edit #{channel.name}", "/channels/#{channel.id}/edit" %></p>
+    <p><%= link_to "Delete #{channel.name}", "/channels/#{channel.id}", method: :delete %></p>
 <% end %>
 <h4><%= link_to "New Channel", "/channels/new" %></h4>
