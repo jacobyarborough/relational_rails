@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   #accounts
   get '/accounts', to: 'accounts#index'
   get '/accounts/:id', to: 'accounts#show'
+  get '/accounts/:id/edit', to: 'accounts#edit'
+  patch '/accounts/:id', to: 'accounts#update'
 
   #customer accounts
   get '/customers/:id/accounts', to: 'customer_accounts#index'

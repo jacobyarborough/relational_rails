@@ -61,4 +61,43 @@ RSpec.describe 'show page' do
 
     expect(current_path).to eq("/customers")
   end
+
+# User Story 14, Child Update (x2)
+#
+# As a visitor
+# When I visit a Child Show page
+# Then I see a link to update that Child "Update Child"
+# When I click the link
+# I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+# When I click the button to submit the form "Update Child"
+# Then a `PATCH` request is sent to '/child_table_name/:id',
+# the child's data is updated,
+# and I am redirected to the Child Show page where I see the Child's updated information
+
+  it "has a link that can update an Account" do
+    customer = Customer.create!(name: 'Ted',
+                                age: 28,
+                                active_account: true)
+    account = Account.create!(acct_name: 'Bob',
+                              has_money: true,
+                              dollar_amount: 2400,
+                              customer_id: customer.id)
+    visit "/accounts/#{account.id}"
+
+    click_on 'Update Account'
+
+    expect(current_path).to eq("/accounts/#{account.id}/edit")
+
+    fill_in :acct_name, with: 'Dude'
+    fill_in :dollar_amount, with: 42
+
+    choose('has_money', option: 'yes')
+
+    click_on 'Update Account'
+    expect(current_path).to eq("/accounts/#{account.id}")
+
+    expect(page).to have_content('Dude')
+    expect(page).to have_content(42)
+    expect(page).to have_content(true)
+  end
 end
