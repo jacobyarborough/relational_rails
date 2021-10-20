@@ -4,6 +4,8 @@ class CustomerAccountsController < ApplicationController
     @accounts = @customer.accounts
     if params[:order] == 'alphabetize'
       @accounts = @accounts.alphabetize
+    elsif params[:dollar_amount]
+      @accounts = @accounts.dollar_amount_threshold(params[:dollar_amount])
     end
   end
 

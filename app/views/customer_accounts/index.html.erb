@@ -10,3 +10,9 @@
 <% end %>
 <h4><%= link_to "Create Account", "/customers/#{@customer.id}/accounts/new"%></h4>
 <%= link_to 'Alphabetize', "/customers/#{@customer.id}/accounts?order=alphabetize" %>
+
+<%= form_with url: "/customers/#{@customer.id}/accounts", method: :get, local: true do |form| %>
+  <%= form.label :dollar_amount %>
+  <%= form.number_field :dollar_amount %>
+  <%= form.submit 'Only return records with more than 3000 dollars' %>
+<% end %>

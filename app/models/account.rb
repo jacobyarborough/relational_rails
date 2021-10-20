@@ -8,4 +8,8 @@ class Account < ApplicationRecord
   def self.only_has_money
     where(has_money: true)
   end
+
+  def self.dollar_amount_threshold(amount)
+    where("dollar_amount > ?", amount )
+  end
 end
